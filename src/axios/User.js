@@ -1,4 +1,4 @@
 import axios from "./axios.instanse.js"
 
-
-export const registerRequest = ( userData ) =>  axios.post(`/users` , userData)
+// POST /api/users
+export const registerRequest = ( userData ) =>  axios.post(`/api/users` , userData)
