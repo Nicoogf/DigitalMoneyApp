@@ -6,7 +6,7 @@ const LayoutPage = ({children}) => {
 
 
   return (
-    <div className="text-white">
+    <div className="text-white h-[100%] overflow-hidden overflow-y-scroll">
         {children}
        
     </div>

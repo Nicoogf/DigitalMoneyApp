@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { registerRequest } from '@/axios/User'
+import { getDataUserRequest, registerRequest } from '@/axios/User'
 import { signInRequest } from '@/axios/Authorization'
 import { getTokenRequest } from '@/axios/Account'
 
@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true)
     const [ token, setToken ] = useState(null);
     const [ credentialsUser , setCredentialsUser ] = useState({})
+    const [ dataUser , setDataUser ] = useState({})
  
  
 
@@ -55,7 +56,7 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    //Fetch para controlar que haya token
+    //Fetch para controlar que haya token y devolver credenciales
     const isLogued = async() =>{
         try {
           const res = await getTokenRequest()
@@ -66,12 +67,23 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    //Fetch para solicitar datos del cliente
+     const getDataUser = async(id_user) => {
+        try {
+            const res = await getDataUserRequest(id_user);
+            console.log(res)
+            setDataUser(res.data);
+          } catch (error) {
+            console.log('Error fetching account details:', error);
+          }
+     }
+
     useEffect( () => {
         isLogued()
     },[])
 
     return (
-        <AuthContext.Provider value={{credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{dataUser,getDataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )
