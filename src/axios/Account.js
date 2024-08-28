@@ -1,11 +1,11 @@
 import axios from "./axios.instanse.js"
 import Cookies from 'js-cookie';
 
-export const getAccountDetails = async () => {
+export const getTokenRequest = async () => {
     try {
         const token = Cookies.get('token')
         console.log(token)
-        const response = await axios.get('/account', {
+        const response = await axios.get('/api/account', {
             headers: {
                 Authorization: `${token}`,
             }

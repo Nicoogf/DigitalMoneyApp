@@ -3,6 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { registerRequest } from '@/axios/User'
 import { signInRequest } from '@/axios/Authorization'
+import { getTokenRequest } from '@/axios/Account'
 
 
 const AuthContext = createContext()
@@ -20,6 +21,8 @@ export const AuthProvider = ({ children }) => {
     const [ contextErrors , setContextErrors ] = useState([])
     const [ loading, setLoading ] = useState(true)
     const [ token, setToken ] = useState(null);
+    const [ credentialsUser , setCredentialsUser ] = useState({})
+ 
  
 
     //Peticion de Registro
@@ -39,15 +42,36 @@ export const AuthProvider = ({ children }) => {
         try {
             const res = await signInRequest(user)
             console.log("El valor de data fue:", res.data.token)
-            router.push("/dashboard")
-        } catch (error) {            
-            console.log(error.response?.data)
-            setContextErrors("Credenciales inválidas")
+            setLoading(false)                      
+        } catch (error) {   
+            setLoading(false)         
+            if (error.response) {
+                const errorMessage = error.response.data.error;       
+                const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+                setContextErrors(errorsArray);
+            } else {
+                setContextErrors(['Se produjo un error inesperado.']);
+            }
         }
     }
 
+    //Fetch para controlar que haya token
+    const isLogued = async() =>{
+        try {
+          const res = await getTokenRequest()
+          console.log("el useeffect devolvio" , res.data)
+          setCredentialsUser(res.data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect( () => {
+        isLogued()
+    },[])
+
     return (
-        <AuthContext.Provider value={{ contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )
