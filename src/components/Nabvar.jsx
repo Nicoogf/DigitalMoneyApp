@@ -10,7 +10,7 @@ const Nabvar = () => {
     <Link href="/dashboard/get-money" className="p-2 rounded-md bg-blue-500 text-white">
     depo
     </Link>
-    <Link href="/dashboard/send" className="p-2 rounded-md bg-blue-500 text-white">
+    <Link href="/dashboard/send-money" className="p-2 rounded-md bg-blue-500 text-white">
     send
     </Link>
     <Link href="/dashboard/services" className="p-2 rounded-md bg-blue-500 text-white">

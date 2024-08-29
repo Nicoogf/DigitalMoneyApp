@@ -8,20 +8,29 @@ import React ,{useEffect} from 'react'
 
 
 const HomePage = () => {
-  const { isAutenticated ,credentialsUser , getDataUser, dataUser} = useAuth()
+  const { 
+    credentialsUser ,  // id id_user amount cvu alias
+    dataUser , // name lastname dni email
+    loading , // esta cargando ?
+    setLoading ,
+    getDataUser // trae los datos del user
+  } = useAuth()
+
   const { listServices } = useServices()
-  const {transactionsList , getListTransactions , getListTransferences, transferencesList} = useTransaction()
-  const { cardsList ,fetchCards } = useCards()
+  const { transactionsList ,  transferencesList ,getListTransferences ,getListTransactions} = useTransaction()
+  const { cardsList  } = useCards()
 
-
-  useEffect( () => {
-    getDataUser(credentialsUser?.user_id)
-    getListTransactions(credentialsUser?.id)
-    getListTransferences(credentialsUser?.id)
-    fetchCards(credentialsUser?.id)
+useEffect(() => {
+  const fetchData = async() => {
+    if( credentialsUser?.user_id){
+      await getDataUser(credentialsUser?.user_id)  
+      await getListTransferences(credentialsUser?.id)
+      // await getListTransactions(credentialsUser?.id)
+    }
+    setLoading(false);  
+  }
+  fetchData()
 },[credentialsUser])
-
-
 
   return (
     <div className="text-white flex flex-col  gap-y-10">
@@ -31,6 +40,10 @@ const HomePage = () => {
         <p> esta autenticado ? </p>
         <p>{ credentialsUser ? "true" : "false" } </p>
         </section>
+    
+
+        <h1 className="text-center text-5xl font-bold"> ${credentialsUser?.available_amount} </h1>
+        <h3> esta cargando ? {loading ? "si" : "no"}  </h3>
         
 
         <section className="flex flex-row gap-2">
@@ -43,10 +56,10 @@ const HomePage = () => {
         <p> {JSON.stringify(dataUser)} </p>
         </section>
 
-        <section className="flex flex-row gap-2">
+        {/* <section className="flex flex-row gap-2">
         <p>Servicios </p>
         <p> {JSON.stringify(listServices)} </p>
-        </section>
+        </section> */}
 
         {/* <section className="flex flex-row gap-2">
         <p>Transactions </p>
@@ -54,14 +67,14 @@ const HomePage = () => {
         </section> */}
 
         <section className="flex flex-row gap-2">
-        <p>Transactions </p>
+        <p> Transferences </p>
         <p> {JSON.stringify(transferencesList)} </p>
         </section>
 
-        <section className="flex flex-row gap-2">
+        {/* <section className="flex flex-row gap-2">
         <p>Cards </p>
         <p> {JSON.stringify(cardsList)} </p>
-        </section>
+        </section> */}
       
       
     </div>

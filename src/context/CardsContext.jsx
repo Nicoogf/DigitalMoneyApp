@@ -1,6 +1,7 @@
 'use client'
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState ,useEffect } from 'react';
 import { CreateCardRequest, DeleteCardRequest, getCardRequest, getCardsRequest } from '@/axios/Cards';
+import { useAuth } from './UserContext';
 
 const CardsContext = createContext();
 
@@ -13,6 +14,7 @@ export const useCards = () => {
 };
 
 export const CardsProvider = ({ children }) => {
+    const {credentialsUser} = useAuth()
     const [cardsList, setCardsList] = useState([]);
     const [selectedCardId, setSelectedCardId] = useState(null);
 
@@ -28,7 +30,9 @@ export const CardsProvider = ({ children }) => {
         }
     };
 
-
+ useEffect(() => {
+    fetchCards(credentialsUser?.id)
+ },[credentialsUser])
 
     return (
         <CardsContext.Provider value={{ fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>

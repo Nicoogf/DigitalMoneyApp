@@ -58,32 +58,45 @@ export const AuthProvider = ({ children }) => {
 
     //Fetch para controlar que haya token y devolver credenciales
     const isLogued = async() =>{
+        setLoading(true)
         try {
-          const res = await getTokenRequest()
-          console.log("el useeffect devolvio" , res.data)
+          const res = await getTokenRequest()          
           setCredentialsUser(res.data)
+          setLoading(false)
         } catch (error) {
+            setLoading(false)
             console.log(error)
+        }
+        finally{
+          setLoading(false)
         }
     }
 
     //Fetch para solicitar datos del cliente
      const getDataUser = async(id_user) => {
+        setLoading(true)
         try {
             const res = await getDataUserRequest(id_user);
             console.log(res)
             setDataUser(res.data);
+            setLoading(false)
           } catch (error) {
             console.log('Error fetching account details:', error);
+            setLoading(false)
+          }
+          finally{
+            setLoading(false)
           }
      }
 
-    useEffect( () => {
+    useEffect(() => {
         isLogued()
-    },[])
+    },[setLoading])
+
+
 
     return (
-        <AuthContext.Provider value={{dataUser,getDataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )
