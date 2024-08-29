@@ -8,9 +8,7 @@ const LayoutPage = ({children}) => {
 
   return (
     <div className="text-white h-[100%] overflow-hidden overflow-y-scroll">
-       <Nabvar />
-        {children}
-       
+      {children}       
     </div>
   )
 }

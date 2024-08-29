@@ -14,6 +14,7 @@ export const useCards = () => {
 
 export const CardsProvider = ({ children }) => {
     const [cardsList, setCardsList] = useState([]);
+    const [selectedCardId, setSelectedCardId] = useState(null);
 
 
 
@@ -30,7 +31,7 @@ export const CardsProvider = ({ children }) => {
 
 
     return (
-        <CardsContext.Provider value={{ fetchCards, cardsList }}>
+        <CardsContext.Provider value={{ fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );
