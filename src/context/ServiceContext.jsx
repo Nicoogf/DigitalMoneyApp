@@ -16,6 +16,7 @@ export const useServices = () => {
 
 export const ServiceProvider = ({ children }) => {
     const [listServices, setListServices] = useState([])
+    const [selectedService, SetSelectService] = useState(null)
 
     const fetchList = async () => {
         try {
@@ -32,7 +33,7 @@ export const ServiceProvider = ({ children }) => {
     }, [])
 
     return (
-        <ServiceContext.Provider value={{listServices}}>
+        <ServiceContext.Provider value={{listServices,selectedService, SetSelectService}}>
             {children}
         </ServiceContext.Provider>
     );

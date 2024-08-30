@@ -105,14 +105,14 @@ const TransferencePage = () => {
     const transferenceData = {
       amount: -Math.abs(data.amount),  
       dated: new Date().toISOString(),
-      destination: '702833029073258769', // CVU de destino - Podrías pasarlo también desde el formulario si fuera necesario
+      destination: '702833029073258769', // CVU de destino -
       origin: credentialsUser.cvu, 
     };
 
     try {
       await transferAmount(credentialsUser.id, transferenceData);
       console.log("Transference successful:");
-      router.push('/dashboard'); // Redirige al dashboard después de la transferencia
+      router.push('/dashboard'); 
 
     } catch (error) {
       console.error('Error during transference:', error);
