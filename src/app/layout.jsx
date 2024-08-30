@@ -4,7 +4,6 @@ import "./globals.css";
 import { ServiceProvider } from "@/context/ServiceContext";
 import { TransactionProvider } from "@/context/TransactionsContext";
 import { CardsProvider } from "@/context/CardsContext";
-import Nabvar from "@/components/Nabvar";
 
 export const metadata = {
   title: "Digital Money App",
@@ -20,9 +19,8 @@ export default function RootLayout({ children }) {
             <ServiceProvider>
 
               <body className="flex items-center h-[100vh]">
-                <main className="relative w-full max-w-[1920px] mx-auto bg-slate-900 h-[calc(100vh-48px)]">
-                  {children}
-                  <Nabvar />
+                <main className="w-full max-w-[1920px] mx-auto bg-slate-900 h-[calc(100vh-48px)]">
+                  {children}                  
                 </main>
               </body>
 
