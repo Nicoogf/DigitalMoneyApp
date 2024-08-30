@@ -25,7 +25,7 @@ useEffect(() => {
     if( credentialsUser?.user_id){
       await getDataUser(credentialsUser?.user_id)  
       await getListTransferences(credentialsUser?.id)
-      // await getListTransactions(credentialsUser?.id)
+      await getListTransactions(credentialsUser?.id)
     }
     setLoading(false);  
   }
@@ -61,10 +61,10 @@ useEffect(() => {
         <p> {JSON.stringify(listServices)} </p>
         </section> */}
 
-        {/* <section className="flex flex-row gap-2">
+        <section className="flex flex-row gap-2">
         <p>Transactions </p>
         <p> {JSON.stringify(transactionsList)} </p>
-        </section> */}
+        </section>
 
         <section className="flex flex-row gap-2">
         <p> Transferences </p>

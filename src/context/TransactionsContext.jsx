@@ -1,5 +1,5 @@
 'use client'
-import { fetchTransactionsRequest } from '@/axios/Transactions';
+import { fetchTransactionsRequest, sendTransactionRequest } from '@/axios/Transactions';
 import { createDepositRequest, createTransferenceRequest, fetchTransferencesRequest } from '@/axios/Transferences';
 import { createContext, useState, useContext, useEffect } from 'react';
 import { useAuth } from './UserContext';
@@ -87,10 +87,32 @@ export const TransactionProvider = ({ children }) => {
         } 
       };
 
+      // const payService = async(user_id) => {
+      //   try {
+      //     const res = await sendTransactionRequest(user_id)
+      //     console.log(res)
+      //   } catch (error) {
+      //     console.log(error)
+      //   }
+      // }
+      const payService = async(user_id, service) => {
+        try {
+            const res = await sendTransactionRequest(
+                user_id,
+                service.invoice_value,  // Monto a pagar
+                new Date().toISOString(),  // Fecha actual
+                `Pago de servicio: ${service.name}`  // Descripción
+            );
+            console.log("Respuesta de la transacción:", res);
+        } catch (error) {
+            console.log("Error en payService:", error);
+        }
+    };
+
  
 
     return (
-      <TransactionContext.Provider value={{
+      <TransactionContext.Provider value={{payService,
         loading, error, amount, success, setAmount,transferAmount,
         getListTransactions,depositAmount, transferenceAmount, setTrnsferenceAmout, getListTransferences, transferencesList, transactionsList
       }}>

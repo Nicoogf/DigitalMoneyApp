@@ -9,3 +9,12 @@ export const fetchServicesRequest = async () => {
         throw error;
     }
 };
+
+export const fetchServiceRequest = async (id_service) => {
+    try {
+        const response = await axios.get(`https://digitalmoney.digitalhouse.com/service/${id_service}`);
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
