@@ -154,9 +154,7 @@ const HomePage = () => {
     getDataUser, // trae los datos del user
     isLogued,
   } = useAuth()
-
-  const { listServices } = useServices()
-
+  
   const { 
     transactionsList, 
     transferencesList, 
