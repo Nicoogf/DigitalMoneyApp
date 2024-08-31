@@ -30,9 +30,9 @@ export const CardsProvider = ({ children }) => {
         }
     };
 
- useEffect(() => {
-    fetchCards(credentialsUser?.id)
- },[credentialsUser])
+//  useEffect(() => {
+//     fetchCards(credentialsUser?.id)
+//  },[credentialsUser])
 
     return (
         <CardsContext.Provider value={{ fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>

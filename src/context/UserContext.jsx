@@ -41,8 +41,7 @@ export const AuthProvider = ({ children }) => {
     //Peticion de Iniciar Seccion
     const signIn = async (user) => {
         try {
-            const res = await signInRequest(user)
-            console.log("El valor de data fue:", res.data.token)
+            const res = await signInRequest(user)        
             setLoading(false)                      
         } catch (error) {   
             setLoading(false)         
@@ -76,8 +75,7 @@ export const AuthProvider = ({ children }) => {
      const getDataUser = async(id_user) => {
         setLoading(true)
         try {
-            const res = await getDataUserRequest(id_user);
-            console.log(res)
+            const res = await getDataUserRequest(id_user);        
             setDataUser(res.data);
             setLoading(false)
           } catch (error) {
@@ -89,14 +87,12 @@ export const AuthProvider = ({ children }) => {
           }
      }
 
-    useEffect(() => {
-        isLogued()
-    },[setLoading])
+  
 
 
 
     return (
-        <AuthContext.Provider value={{setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )

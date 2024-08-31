@@ -22,8 +22,7 @@ export const ServiceProvider = ({ children }) => {
 
     const fetchList = async () => {
         try {
-            const res = await fetchServicesRequest()
-            console.log("Los servicios son" , res)
+            const res = await fetchServicesRequest()           
             setListServices(res)
         } catch (error) {
             console.log(error)
@@ -33,8 +32,7 @@ export const ServiceProvider = ({ children }) => {
 
     const fetchService = async(id_service) => {
         try {
-            const res = await fetchServiceRequest(id_service)
-            console.log("Los servicios son" , res)
+            const res = await fetchServiceRequest(id_service)          
             setService(res)
         } catch (error) {
             console.log(error)

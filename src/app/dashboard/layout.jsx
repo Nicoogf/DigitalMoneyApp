@@ -1,11 +1,27 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
+import React ,{useEffect} from 'react'
 import LogoDMH from "../../../public/logo-on.png"
 import Link from 'next/link'
+import { useAuth } from '@/context/UserContext'
+import { getFirstLetters } from '@/funcionalidad/funcionalidades'
 
-const LayoutPage = ({ children }) => {
+const LayoutPage = ({ children }) => {  const {
+  credentialsUser,  // id id_user amount cvu alias
+  dataUser, // name lastname dni email
+  loading, // esta cargando ?
+  setLoading,
+  getDataUser, // trae los datos del user
+  isLogued
+} = useAuth()
 
+useEffect(() => {
+  isLogued()
+},[])
+
+useEffect( () => {
+  getDataUser(credentialsUser?.user_id)
+} , [credentialsUser]) 
 
   return (
     <section className="text-white h-[100%] overflow-hidden overflow-y-scroll grid grid-cols-12 relative">
@@ -14,9 +30,9 @@ const LayoutPage = ({ children }) => {
         <Image src={LogoDMH} alt="Digital Money House Logo" className=" ml-8 w-20 object-contain" />
         <Link href="/dashboard" className="flex flex-row items-center mr-8 gap-x-4">
           <h6 className="bg-greenlime rounded-lg py-1 px-2 text-lime-950 font-bold">
-            NF
+            {getFirstLetters(dataUser?.firstname,dataUser?.lastname)}
           </h6>
-          <p className="font-semibold"> Hola , Nicolas Falabella </p>
+          <p className="font-semibold"> Hola , {dataUser?.firstname}  {dataUser?.lastname}</p>
         </Link>
       </header>
 
@@ -35,6 +51,10 @@ const LayoutPage = ({ children }) => {
         {children}
       </section>
 
+      <footer className="p-4 bg-greylight absolute bottom-0 z-50 w-full py-3 text-greenlime"> 
+        Digital Money House 2024
+      </footer>
+          
     </section>
   )
 }
