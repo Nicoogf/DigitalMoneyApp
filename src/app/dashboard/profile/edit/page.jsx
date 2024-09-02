@@ -150,7 +150,7 @@ const EditProfilePage = () => {
             email: data.email,
             firstname: data.firstname,
             lastname: data.lastname,
-            dni: parseInt(data.dni, 10), // Convertir dni a número entero
+            dni: parseInt(data.dni, 10), 
             phone: data.phone,
         };
 

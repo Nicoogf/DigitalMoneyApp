@@ -144,6 +144,7 @@ import React, { useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
+import toast, { Toaster } from 'react-hot-toast';
 
 const HomePage = () => {
   const {
@@ -204,7 +205,11 @@ const HomePage = () => {
     <section className="text-white flex flex-col gap-y-4">
       <article className="shadow-md bg-graydark rounded-md mt-20 text-white py-12 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
         <CopyToClipboard text={credentialsUser?.cvu} >
-          <article onClick={toggleShowMenu} className={`cursor-pointer transition-all duration-200 font-semibold  absolute ${showCVU ? "translate-x-0" : "translate-x-[300px]"}  bottom-0 right-0 text-lime-950 bg-greenlime px-12 py-2 rounded-tl-md flex flex-row items-center`}>
+          <article onClick={ ()=>{
+            toggleShowMenu()
+            toast.success("CVU copiado en el Portapapeles")
+
+            }} className={`cursor-pointer transition-all duration-200 font-semibold  absolute ${showCVU ? "translate-x-0" : "translate-x-[300px]"}  bottom-0 right-0 text-lime-950 bg-greenlime px-12 py-2 rounded-tl-md flex flex-row items-center`}>
             <MdOutlineContentCopy className='mx-2 text-xl' />
             <p> {credentialsUser?.cvu} </p>
           </article>
@@ -249,7 +254,7 @@ const HomePage = () => {
           <FaArrowRight />
         </Link>
       </section> 
-
+      <Toaster />
     </section>
   )
 }

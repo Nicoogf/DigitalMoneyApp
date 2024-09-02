@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true)
     const [ credentialsUser , setCredentialsUser ] = useState({})
     const [ dataUser , setDataUser ] = useState({})
+    const [ errorsLogin, setErrorLogin ] = useState(null)
 
     
    
@@ -51,6 +52,7 @@ export const AuthProvider = ({ children }) => {
                 const errorMessage = error.response.data.error;       
                 const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
                 setContextErrors(errorsArray);
+                setErrorLogin(errorsArray)
             } else {
                 setContextErrors(['Se produjo un error inesperado.']);
             }
@@ -123,7 +125,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ updateUser,
+        <AuthContext.Provider value={{errorsLogin, updateUser,setErrorLogin,
             loading,
             contextErrors,logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
