@@ -40,11 +40,22 @@ export const CardsProvider = ({ children }) => {
         }
     };
 
+    
+    const createCard = async (accountId, cardData) => {
+        try {
+          const newCard = await CreateCardRequest(accountId, cardData);
+          setCardsList((prevCards) => [...prevCards, newCard]);
+        } catch (error) {
+          console.error('Fallo en la creacion de Tarjeta:', error);
+          console.log(error.response?.data)
+        }
+      };
+
 
 
 
     return (
-        <CardsContext.Provider value={{ deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
+        <CardsContext.Provider value={{ createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );

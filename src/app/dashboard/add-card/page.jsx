@@ -1,6 +1,7 @@
 'use client';
 import { useCards } from '@/context/CardsContext';
 import { useAuth } from '@/context/UserContext';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
@@ -10,8 +11,8 @@ import { useForm } from 'react-hook-form';
 const AddCardPage = () => {
   const { createCard , error } = useCards();
   const { credentialsUser } = useAuth()
+  const router = useRouter()
 
-  console.log(credentialsUser?.id)
   const [state, setState] = useState({
     number: '',
     expiry: '',
@@ -50,6 +51,7 @@ const AddCardPage = () => {
       const accountId = credentialsUser?.id; 
       await createCard(accountId, cardData);
       console.log('Card created successfully');
+      router.push("/dashboard/cards")
     } catch (error) {
       console.error('Error creating card:', error);
     }
@@ -59,7 +61,7 @@ const AddCardPage = () => {
 
   return (
     <main>
-      <section className='mt-8 w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8'>
+      <section className='mt-20 w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8 text-black'>
         <Cards
           number={state.number}
           expiry={state.expiry}
@@ -76,7 +78,7 @@ const AddCardPage = () => {
             value={state.number}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md'
+            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md outline-none'
           />
           <input
             type="text"
@@ -86,7 +88,7 @@ const AddCardPage = () => {
             value={state.expiry}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md'            
+            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md outline-none'            
           />
           <input
             type="text"
@@ -96,7 +98,7 @@ const AddCardPage = () => {
             value={state.cvc}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md'
+            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md outline-none'
           />
           <input
             type="text"
@@ -106,7 +108,7 @@ const AddCardPage = () => {
             value={state.name}
             onChange={handleInputChange}
             onFocus={handleInputFocus}
-            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md'
+            className='col-span-4 lg:col-span-2 py-2 px-4 border border-gray-400 rounded-lg shadow-md outline-none'
           />
           <button className="font-semibold bg-greenlime py-3 px-8 text-center col-span-4 rounded-lg ml-auto">
             Continuar

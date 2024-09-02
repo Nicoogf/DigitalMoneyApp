@@ -1,7 +1,7 @@
 'use client'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { getDataUserRequest, registerRequest } from '@/axios/User'
+import { getDataUserRequest, registerRequest, updateUserRequest } from '@/axios/User'
 import { signInRequest } from '@/axios/Authorization'
 import { getTokenRequest } from '@/axios/Account'
 import Cookies from "js-cookie";
@@ -23,7 +23,8 @@ export const AuthProvider = ({ children }) => {
     const [ loading, setLoading ] = useState(true)
     const [ credentialsUser , setCredentialsUser ] = useState({})
     const [ dataUser , setDataUser ] = useState({})
- 
+
+    
    
  
 
@@ -95,6 +96,26 @@ export const AuthProvider = ({ children }) => {
         router.push("/login")
     }
 
+    const updateUser = async (userId, userData) => {
+      setLoading(true);
+      try {
+        const updatedUser = await updateUserRequest(userId, userData);
+        setLoading(false);
+        setCredentialsUser(updatedUser); 
+        return updatedUser;
+      } catch (error) {
+        console.log(error)
+        setLoading(false);
+        if (error.response) {
+          const errorMessage = error.response.data.error;
+          const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+          setContextErrors(errorsArray);
+        } else {
+          setContextErrors(['Se produjo un error inesperado.']);
+        }
+      }
+    };
+  
 
 
   
@@ -102,7 +123,9 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{ logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{ updateUser,
+            loading,
+            contextErrors,logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )

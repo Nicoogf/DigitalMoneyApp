@@ -29,3 +29,20 @@ export const DeleteCardRequest = async (accountId, cardId) => {
         throw error;
     }
 };
+
+export const CreateCardRequest = async (accountId, cardData) => {
+    try {
+      const token = Cookies.get('token')
+      console.log(token)
+      const response = await axios.post(`/api/accounts/${accountId}/cards`, cardData, {
+        headers: {
+          Authorization: `${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error creating card:', error);
+      throw error;
+    }
+  };

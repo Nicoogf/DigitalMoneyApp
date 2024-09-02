@@ -42,11 +42,11 @@ useEffect( () => {
       <nav className="hidden lg:grid lg:col-span-3 bg-greenlime">
         <div className="flex flex-col gap-y-4 p-8 mt-20 text-lime-950 font-semibold text-lg">
           <Link href="/dashboard" className="text-semibold"> Inicio </Link>
-          <Link href="/dashboard/activity"> Actividad </Link>
-          <Link href="/dashboard/profile"> Tu Perfil </Link>
+          <Link href="/dashboard/activity"> Actividad </Link>       
           <Link href="/dashboard/get-money"> Cargar Dinero  </Link>
           <Link href="/dashboard/pay-services"> Pagar Servcios </Link>
           <Link href="/dashboard/cards"> Tarjetas  </Link>
+          <Link href="/dashboard/profile"> Tu Perfil </Link>
           <button onClick={logout} className="block text-start"> Cerrar Sesíon </button>
         </div>
       </nav>
