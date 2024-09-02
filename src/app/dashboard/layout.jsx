@@ -12,8 +12,11 @@ const LayoutPage = ({ children }) => {  const {
   loading, // esta cargando ?
   setLoading,
   getDataUser, // trae los datos del user
-  isLogued
+  isLogued,
+  logout
 } = useAuth()
+
+
 
 useEffect(() => {
   isLogued()
@@ -44,7 +47,7 @@ useEffect( () => {
           <Link href="/dashboard/get-money"> Cargar Dinero  </Link>
           <Link href="/dashboard/pay-services"> Pagar Servcios </Link>
           <Link href="/dashboard/cards"> Tarjetas  </Link>
-          <Link href="/"> Cerrar Sesíon </Link>
+          <button onClick={logout}> Cerrar Sesíon </button>
         </div>
       </nav>
       <section className="col-span-12 lg:col-span-9 bg-lightmain max-h-[980px] overflow-hidden">

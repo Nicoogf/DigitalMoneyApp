@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import { getDataUserRequest, registerRequest } from '@/axios/User'
 import { signInRequest } from '@/axios/Authorization'
 import { getTokenRequest } from '@/axios/Account'
+import Cookies from "js-cookie";
 
 
 const AuthContext = createContext()
@@ -87,12 +88,20 @@ export const AuthProvider = ({ children }) => {
           }
      }
 
+     //Cerrar Sesion
+     const logout = () =>{
+        Cookies.remove("token")
+        setCredentialsUser(null)
+        router.push("/login")
+    }
+
+
   
 
 
 
     return (
-        <AuthContext.Provider value={{isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )
