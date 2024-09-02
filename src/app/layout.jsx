@@ -4,6 +4,7 @@ import "./globals.css";
 import { ServiceProvider } from "@/context/ServiceContext";
 import { TransactionProvider } from "@/context/TransactionsContext";
 import { CardsProvider } from "@/context/CardsContext";
+import { Background } from "@/components/background/Background";
 
 export const metadata = {
   title: "Digital Money App",
@@ -19,9 +20,10 @@ export default function RootLayout({ children }) {
             <ServiceProvider>
 
               <body className="flex items-center h-[100vh]">
-                <main className="w-full max-w-[1920px] mx-auto bg-slate-900 h-screen lg:h-[calc(100vh-48px)]">
+                <main className="w-full max-w-[1920px] mx-auto bg-slate-900 h-screen lg:h-[calc(100vh-48px)] z-50 lg:rounded-xl">
                   {children}                  
                 </main>
+                <Background />
               </body>
 
             </ServiceProvider>

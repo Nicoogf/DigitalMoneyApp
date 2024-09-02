@@ -53,7 +53,7 @@ const LoginPage = () => {
         //         <button className="bg-blue-500 p-2 rounded-lg"> Ingresar </button>
         //     </form>
         // </div>
-        <section className='bg-graydark h-[100%] flex justify-center flex-col relative'>
+        <section className='overflow-hidden bg-graydark h-[100%] flex justify-center flex-col relative lg:rounded-xl'>
             <MenuSuperior link="register" text="Registrate" />
 
             <section className={` ${errorsLogin ? "border border-red-400 bg-gray-950" : ""} w-[95%] bg-graydark h-[200px] max-w-[450px] border-red-300 -mt-48 mx-auto rounded-lg transition-all duration-300`}>
