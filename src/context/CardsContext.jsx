@@ -14,7 +14,6 @@ export const useCards = () => {
 };
 
 export const CardsProvider = ({ children }) => {
-    const {credentialsUser} = useAuth()
     const [cardsList, setCardsList] = useState([]);
     const [selectedCardId, setSelectedCardId] = useState(null);
 
@@ -30,12 +29,22 @@ export const CardsProvider = ({ children }) => {
         }
     };
 
-//  useEffect(() => {
-//     fetchCards(credentialsUser?.id)
-//  },[credentialsUser])
+    const deleteCard = async (accountId, cardId ) => {
+        try {
+            await DeleteCardRequest(accountId, cardId );
+            setCardsList(prevCards => prevCards.filter(card => card.id !== cardId));
+        } catch (err) {
+            console.log(err.message || 'Error eliminando la tarjeta');
+        } finally {
+           
+        }
+    };
+
+
+
 
     return (
-        <CardsContext.Provider value={{ fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
+        <CardsContext.Provider value={{ deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );

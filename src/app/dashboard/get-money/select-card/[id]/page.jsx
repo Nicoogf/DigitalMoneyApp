@@ -27,7 +27,7 @@ const IdCardPage = () => {
   }, [selectedCardId, router]);
 
 
-  console.log("El id que sigue seleccionado es " , selectedCardId)
+
 
   return (
     <main>

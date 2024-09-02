@@ -21,10 +21,10 @@ export const AuthProvider = ({ children }) => {
     const router = useRouter()
     const [ contextErrors , setContextErrors ] = useState([])
     const [ loading, setLoading ] = useState(true)
-    const [ token, setToken ] = useState(null);
     const [ credentialsUser , setCredentialsUser ] = useState({})
     const [ dataUser , setDataUser ] = useState({})
  
+   
  
 
     //Peticion de Registro
@@ -96,12 +96,13 @@ export const AuthProvider = ({ children }) => {
     }
 
 
+
   
 
 
 
     return (
-        <AuthContext.Provider value={{logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+        <AuthContext.Provider value={{ logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )

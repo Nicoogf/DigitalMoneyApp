@@ -210,7 +210,7 @@ const HomePage = () => {
           </article>
         </CopyToClipboard>
         <div className="flex flex-row gap-x-4 justify-end mr-8">
-          <Link href="/" className="text-white transition-all duration-200 hover:text-greenlime"> Ver Tarjetas </Link>
+          <Link href="/dashboard/cards" className="text-white transition-all duration-200 hover:text-greenlime"> Ver Tarjetas </Link>
           <button onClick={toggleShowMenu} className="text-white transition-all duration-200 hover:text-greenlime"> Ver CVU </button>
         </div>
         <div className="ml-8 flex flex-col gap-y-2 pb-4 ">

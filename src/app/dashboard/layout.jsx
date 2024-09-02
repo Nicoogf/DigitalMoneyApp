@@ -47,7 +47,7 @@ useEffect( () => {
           <Link href="/dashboard/get-money"> Cargar Dinero  </Link>
           <Link href="/dashboard/pay-services"> Pagar Servcios </Link>
           <Link href="/dashboard/cards"> Tarjetas  </Link>
-          <button onClick={logout}> Cerrar Sesíon </button>
+          <button onClick={logout} className="block text-start"> Cerrar Sesíon </button>
         </div>
       </nav>
       <section className="col-span-12 lg:col-span-9 bg-lightmain max-h-[980px] overflow-hidden">

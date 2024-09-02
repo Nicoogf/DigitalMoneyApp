@@ -8,16 +8,22 @@ import Link from 'next/link';
 
 const CardsPage = () => {
 
-    const { credentialsUser, getDataUser  } = useAuth()
-    const { cardsList, fetchCards } = useCards()
+    const { credentialsUser, getDataUser ,usuario } = useAuth()
+    const { cardsList, fetchCards, deleteCard } = useCards()
 
     useEffect(() => {
         getDataUser(credentialsUser?.user_id)
         fetchCards(credentialsUser?.id)
     }, [credentialsUser])
 
+    const handleDelete = async (cardId) => {
+        if (credentialsUser) {
+            await deleteCard(credentialsUser?.id, cardId );
+        }
+    };
+
     return (
-        <main className='pb-20 text-black'>
+        <main className='pb-20 text-black mt-20'>
             <Link href="/dashboard/add-card/" className="mt-8 w-[90%] max-w-[720px] mx-auto bg-graydark text-greenlime flex rounded-xl shadow-lg flex-col gap-y-4 px-10 py-12 justify-between">
                 <h6 className='text-white font-semibold'>Agrega tu tarjeta de débito o crédito</h6>
                 <div className='flex flex-row items-center justify-between'>

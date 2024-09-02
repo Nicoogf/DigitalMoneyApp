@@ -15,3 +15,17 @@ export const getCardsRequest = async (accountId, token) => {
         throw error;
     }
 };
+
+export const DeleteCardRequest = async (accountId, cardId) => {
+    try {
+        const token = Cookies.get('token')
+        const response = await axios.delete(`/api/accounts/${accountId}/cards/${cardId}`, {
+            headers: {
+                Authorization: token,
+            },
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+};
