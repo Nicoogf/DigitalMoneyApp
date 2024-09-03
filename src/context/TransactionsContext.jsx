@@ -85,20 +85,22 @@ export const TransactionProvider = ({ children }) => {
   // }
 
   const depositAmount = async (accountId, depositData) => {
-    setLoading(true);
+    setLoadingTransactions(true);
     setError(null);
     setSuccess(false); // Reset success state before attempting deposit
   
     try {
       const res = await createDepositRequest(accountId, depositData);
       setSuccess(true); // Set success to true if the deposit was successful
-      router.push("/dashboard");
+      // router.push("/dashboard");
+      setLoadingTransactions(false)
       console.log(res);
     } catch (error) {
       setError('Hubo un problema al procesar la transacción.');
       console.log(error);
+      setLoadingTransactions(false)
     } finally {
-      setLoading(false);
+      setLoadingTransactions(false);
     }
   }
 
@@ -140,9 +142,9 @@ export const TransactionProvider = ({ children }) => {
 
 
   return (
-    <TransactionContext.Provider value={{
-      payService,
-      loadingTransactions, error, amount, success, setAmount, transferAmount,
+    <TransactionContext.Provider value={{setSuccess,
+      payService,loadingTransactions, setLoadingTransactions,
+      error, amount, success, setAmount, transferAmount,
       getListTransactions, depositAmount, transferenceAmount, setTrnsferenceAmout: setTransferenceAmout, getListTransferences, transferencesList, transactionsList
     }}>
       {children}

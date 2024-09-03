@@ -94,7 +94,7 @@ const ProfilePage = () => {
 
             </section>
 
-            <Link href="/dahsboard/cards" className='w-[90%] max-w-[720px] mx-auto flex flex-row justify-between items-center px-20 py-10 rounded-xl shadow-lg mt-6 bg-greenlime'>
+            <Link href="/dashboard/cards" className='w-[90%] max-w-[720px] mx-auto flex flex-row justify-between items-center px-20 py-10 rounded-xl shadow-lg mt-6 bg-greenlime'>
                 <h6 className='font-semibold text-lg text-lime-950'> Gestiona los medios de pagos</h6>
                 <FaArrowRight className="text-lime-950"/>
             </Link>

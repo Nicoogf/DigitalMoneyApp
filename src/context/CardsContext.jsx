@@ -1,7 +1,6 @@
 'use client'
 import React, { createContext, useContext, useState ,useEffect } from 'react';
 import { CreateCardRequest, DeleteCardRequest, getCardRequest, getCardsRequest } from '@/axios/Cards';
-import { useAuth } from './UserContext';
 import { useRouter } from 'next/navigation';
 
 const CardsContext = createContext();
@@ -19,6 +18,8 @@ export const CardsProvider = ({ children }) => {
     const [cardsList, setCardsList] = useState([]);
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [cardErrors , setCardsErrors ] = useState(null)
+
+    const [ fetchCardId , setFetchCardId ] = useState(null)
 
 
     const fetchCards = async (accountId) => {
@@ -55,11 +56,21 @@ export const CardsProvider = ({ children }) => {
         }
       };
 
+      const fetchCard = async (accountId , cardId) => {
+        try {
+            const data = await getCardRequest(accountId,cardId);
+            setFetchCardId(data);
+        } catch (error) {
+            console.log(error)
+        }
+    };
+
+
 
 
 
     return (
-        <CardsContext.Provider value={{ setCardsErrors,cardErrors, createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
+        <CardsContext.Provider value={{ fetchCardId, fetchCard ,setCardsErrors,cardErrors, createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );

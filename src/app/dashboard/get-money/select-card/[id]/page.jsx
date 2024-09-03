@@ -13,9 +13,6 @@ const IdCardPage = () => {
   const { amount , setAmount } = useTransaction()
 
   const handleNextStep = () => {
-   
-    // const id = window.location.pathname.split('/').filter(Boolean).pop();  
-    // console.log(id)
     setAmount(inputAmount);
     router.push(`/dashboard/get-money/select-card/${selectedCardId}/confirm`);
   };
@@ -31,7 +28,7 @@ const IdCardPage = () => {
 
   return (
     <main>
-    <Link href="/dashboard/get-money/select-card" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer'>
+    <Link href="/dashboard/get-money/select-card" className='mt-20 text-gray-950 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer'>
       Ir Atras
     </Link>
     <section className='flex flex-col mt-8 p-10 bg-graydark rounded-lg w-[90%] mx-auto max-w-[720px]'>
