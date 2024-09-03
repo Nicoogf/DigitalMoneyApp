@@ -123,7 +123,7 @@ const ConfirmPage = () => {
       };
     return (
         <main>
-            <Link href="/dashboard/get-money/select-card/id" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer'>
+            <Link href="/dashboard/get-money/select-card/id" className='mt-20 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer'>
                 Ir Atras
             </Link>
             <form className='mt-8 shadow-md rounded-lg  p-8 bg-graydark mx-auto w-[90%] max-w-[720px]'>
