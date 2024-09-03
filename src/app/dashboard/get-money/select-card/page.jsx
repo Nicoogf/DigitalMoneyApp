@@ -6,10 +6,11 @@ import React,{useEffect , useState} from 'react'
 import { useForm } from 'react-hook-form'
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { useRouter } from 'next/navigation'
+import LoadingSpinner from '@/components/loading'
 
 const SelectCard = () => {
   const { credentialsUser  } = useAuth()
-  const { cardsList ,fetchCards,selectedCardId, setSelectedCardId } = useCards()
+  const { cardsList ,fetchCards,selectedCardId, setSelectedCardId ,cardsLoading} = useCards()
   const { handleSubmit} = useForm()
 
   const router = useRouter()
@@ -45,9 +46,10 @@ useEffect(() => {
                     <h6 className='text-lg font-semibold'> Tus Tarjetas </h6>
             
 
-                    <section className='flex flex-col'>
+                    <section className='flex flex-col justify-center items-center'>
+                        {cardsLoading && <LoadingSpinner /> }
                         {cardsList.map((card) => (
-                            <article key={card.id} className='flex flex-row items-center justify-between border-b border-gray-300 py-4'>
+                            <article key={card.id} className='w-full flex flex-row items-center justify-between border-b border-gray-300 py-4'>
                                 <div className='flex flex-row items-center gap-x-7'>
                                     <div className='w-8 h-8 rounded-full bg-greenlime' />
                                     <h6>Terminado en {String(card.number_id).slice(-4)}</h6>

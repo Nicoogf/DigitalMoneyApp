@@ -5,6 +5,7 @@ import LogoDMH from "../../../public/logo-on.png"
 import Link from 'next/link'
 import { useAuth } from '@/context/UserContext'
 import { getFirstLetters } from '@/funcionalidad/funcionalidades'
+import LoadingSpinner from '@/components/loading'
 
 const LayoutPage = ({ children }) => {  const {
   credentialsUser,  // id id_user amount cvu alias
@@ -55,7 +56,7 @@ useEffect( () => {
       </section>
 
       <footer className="p-4 bg-greylight absolute bottom-0 z-50 w-full py-3 text-greenlime"> 
-        Digital Money House 2024
+        Digital Money House 2024        
       </footer>
           
     </section>

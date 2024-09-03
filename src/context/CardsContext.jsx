@@ -18,17 +18,21 @@ export const CardsProvider = ({ children }) => {
     const [cardsList, setCardsList] = useState([]);
     const [selectedCardId, setSelectedCardId] = useState(null);
     const [cardErrors , setCardsErrors ] = useState(null)
+    const [ cardsLoading , setCardsLoading ] = useState(false)
 
     const [ fetchCardId , setFetchCardId ] = useState(null)
 
 
     const fetchCards = async (accountId) => {
+        setCardsLoading(true)
         try {
             const data = await getCardsRequest(accountId);
             console.log("Las cards son :" , data)
+            setCardsLoading(false)
             setCardsList(data);
         } catch (error) {
             console.log(error)
+            setCardsLoading(false)
         }
     };
 
@@ -70,7 +74,7 @@ export const CardsProvider = ({ children }) => {
 
 
     return (
-        <CardsContext.Provider value={{ fetchCardId, fetchCard ,setCardsErrors,cardErrors, createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
+        <CardsContext.Provider value={{ cardsLoading,fetchCardId, fetchCard ,setCardsErrors,cardErrors, createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );

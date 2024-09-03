@@ -413,24 +413,29 @@ const ActivityPage = () => {
             </section>
 
             <section className='p-8 mt-8 bg-white w-[90%] mx-auto max-w-[720px] shadow-md rounded-lg relative'>
+                <div className=" absolute top-4 right-4 flex flex-row items-center gap-x-3">
+                <button className={`transition-all duration-200 border ${ingresos ? "border-black text-gray-950 bg-greenlime " : "border-gray-950 bg-gray-950 text-greenlime"} py-1 px-3 rounded-lg`} onClick={handleIngresosClick}>
+                            Ingresos
+                        </button>
+                        <button className={`transition-all duration-200 border ${egresos ? "border-black text-gray-950 bg-greenlime " : "border-gray-950 bg-gray-950 text-greenlime"} py-1 px-3 rounded-lg`} onClick={handleEgresosClick}>
+                            Egresos
+                        </button>
                 <button onClick={toggleArrow}
-                    className={`transition-all duration-300 ${arrowAnimation ? "bg-greenlime text-graydark rotate-180" : "bg-graydark text-greenlime"} rounded-full shadow-md p-2 absolute top-4 right-4`}>
-                    <HiOutlineArrowsUpDown className='text-2xl' />
+                    className={`transition-all duration-300 ${arrowAnimation ? "bg-greenlime text-graydark rotate-180" : "bg-graydark text-greenlime"} rounded-full shadow-md mx-4  w-8 h-8 flex items-center justify-center`}>
+                    <HiOutlineArrowsUpDown className='text-lg rounded-full' />
                 </button>
+                
+                </div>
+                
 
                 <div className="flex flex-row items-center justify-between">
                     <h6 className='text-lg font-semibold border-b border-gray-400 py-4'> Tu actividad </h6>
                     <div className="flex flex-row gap-x-4 mr-10">
-                        <button className={`transition-all duration-200 border ${ingresos ? "border-black text-gray-950 bg-greenlime " : "border-gray-950 bg-gray-950 text-greenlime"} p-2 px-4 rounded-lg`} onClick={handleIngresosClick}>
-                            Ingresos
-                        </button>
-                        <button className={`transition-all duration-200 border ${egresos ? "border-black text-gray-950 bg-greenlime " : "border-gray-950 bg-gray-950 text-greenlime"} p-2 px-4 rounded-lg`} onClick={handleEgresosClick}>
-                            Egresos
-                        </button>
+                      
                     </div>
                 </div>
 
-                <ul className='flex flex-col gap-y-6 mt-4'>
+                <ul className='flex flex-col gap-y-6 mt-4 h-[400px] overflow-hidden overflow-y-scroll'>
                     {filteredTransactions.map((transaction, index) => (
                         <li key={index} className="flex flex-row justify-between py-1 border-b border-gray-300">
                             <div className="flex flex-row items-center gap-x-2 ">

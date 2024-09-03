@@ -145,6 +145,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
 import toast, { Toaster } from 'react-hot-toast';
+import LoadingSpinner from '@/components/loading'
 
 const HomePage = () => {
   const {
@@ -235,9 +236,10 @@ const HomePage = () => {
 
       <section className="bg-white max-w-[720px] mx-auto w-[95%] rounded-lg overflow-hidden overflow-y-scroll p-4 shadow-md">
         <h6 className="text-lg font-semibold text-black border-b-2 border-black pb-2"> Tu Actividad </h6>
-        <div className="h-[250px] flex flex-col overflow-hidden overflow-y-scroll my-2">
+        <div className="h-[250px] flex flex-col overflow-hidden overflow-y-scroll my-2 justify-center items-center">
+          { loadingTransactions && <LoadingSpinner /> }
           {combinedActivityList.map((activity,index) => (
-            <article key={`${activity.id}-${index}`} className="border-b border-gray-300 text-black py-2 flex flex-row justify-between items-center">
+            <article key={`${activity.id}-${index}`} className=" w-full border-b border-gray-300 text-black py-2 flex flex-row justify-between items-center">
               <div className="flex flex-row gap-x-2 items-center ">
                 <div className="w-5 h-5 rounded-full bg-greenlime"/>
                 <p> {activity.description} </p>
