@@ -74,13 +74,31 @@ export const TransactionProvider = ({ children }) => {
   //     }
   // };
 
+  // const depositAmount = async (accountId, depositData) => {
+  //   try {
+  //     const res = await createDepositRequest(accountId, depositData);
+  //     router.push("/dashboard")
+  //     console.log(res)
+  //   } catch (erro) {
+  //     console.log(error)
+  //   }
+  // }
+
   const depositAmount = async (accountId, depositData) => {
+    setLoading(true);
+    setError(null);
+    setSuccess(false); // Reset success state before attempting deposit
+  
     try {
       const res = await createDepositRequest(accountId, depositData);
-      router.push("/dashboard")
-      console.log(res)
-    } catch (erro) {
-      console.log(error)
+      setSuccess(true); // Set success to true if the deposit was successful
+      router.push("/dashboard");
+      console.log(res);
+    } catch (error) {
+      setError('Hubo un problema al procesar la transacción.');
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
   }
 

@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState ,useEffect } from 'react';
 import { CreateCardRequest, DeleteCardRequest, getCardRequest, getCardsRequest } from '@/axios/Cards';
 import { useAuth } from './UserContext';
+import { useRouter } from 'next/navigation';
 
 const CardsContext = createContext();
 
@@ -14,9 +15,10 @@ export const useCards = () => {
 };
 
 export const CardsProvider = ({ children }) => {
+    const router = useRouter()
     const [cardsList, setCardsList] = useState([]);
     const [selectedCardId, setSelectedCardId] = useState(null);
-
+    const [cardErrors , setCardsErrors ] = useState(null)
 
 
     const fetchCards = async (accountId) => {
@@ -45,9 +47,11 @@ export const CardsProvider = ({ children }) => {
         try {
           const newCard = await CreateCardRequest(accountId, cardData);
           setCardsList((prevCards) => [...prevCards, newCard]);
+          router.push("/dashboard/cards")
         } catch (error) {
           console.error('Fallo en la creacion de Tarjeta:', error);
           console.log(error.response?.data)
+          setCardsErrors(error.response?.data)
         }
       };
 
@@ -55,7 +59,7 @@ export const CardsProvider = ({ children }) => {
 
 
     return (
-        <CardsContext.Provider value={{ createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
+        <CardsContext.Provider value={{ setCardsErrors,cardErrors, createCard ,deleteCard, fetchCards, cardsList ,selectedCardId, setSelectedCardId}}>
             {children}
         </CardsContext.Provider>
     );

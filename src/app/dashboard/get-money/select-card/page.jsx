@@ -71,7 +71,7 @@ useEffect(() => {
                         <h6 className='text-greenlime font-semibold'> Nueva Tarjeta </h6>
                     </Link>
 
-                    <button className='bg-greenlime px-8 py-3 rounded-lg font-semibold'>
+                    <button className='bg-greenlime px-8 py-3 rounded-lg font-semibold text-lime-950'>
                         Continuar
                     </button>
                 </section>

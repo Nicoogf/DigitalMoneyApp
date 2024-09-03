@@ -44,7 +44,7 @@ const IdCardPage = () => {
         className='text-black text-lg font-semibold outline-none bg-white rounded-md text-center p-2 w-[90%] max-w-[300px] my-2'
         placeholder='$0'
       />
-      <button onClick={handleNextStep} className='bg-greenlime px-8 py-3 rounded-lg font-semibold max-w-[300px] ml-auto'>
+      <button onClick={handleNextStep} className='bg-greenlime px-8 py-3 rounded-lg font-semibold max-w-[300px] ml-auto text-lime-950'>
         Continuar
       </button>
     </section>

@@ -37,22 +37,7 @@ const LoginPage = () => {
     }
 
     return (
-        // <div className="text-white h-[100%] flex justify-center items-center">
-
-        //     <section className="absolute top-10 left-1/2 transform -translate-x-1/2">
-        //         {Array.isArray(errorsLogin) && errorsLogin.length > 0 ?
-        //             errorsLogin.map((error, key) => (
-        //                 <p key={key}> {error} </p>
-        //             ))
-        //             : ""}
-        //     </section>
-
-        //     <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-        //         <input name="email" type="email" className="bg-slate-700 p-2 rounded" {...register("email", { required: true })} />
-        //         <input name="password" type="password" className="bg-slate-700 p-2 rounded" {...register("password", { required: true })} />
-        //         <button className="bg-blue-500 p-2 rounded-lg"> Ingresar </button>
-        //     </form>
-        // </div>
+       
         <section className='overflow-hidden bg-graydark h-[100%] flex justify-center flex-col relative lg:rounded-xl'>
             <MenuSuperior link="register" text="Registrate" />
 

@@ -82,8 +82,7 @@ export const AuthProvider = ({ children }) => {
             const res = await getDataUserRequest(id_user);        
             setDataUser(res.data);
             setLoading(false)
-          } catch (error) {
-            console.log('Error fetching account details:', error);
+          } catch (error) {            
             setLoading(false)
           }
           finally{
