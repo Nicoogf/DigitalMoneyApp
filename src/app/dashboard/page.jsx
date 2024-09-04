@@ -42,7 +42,7 @@
 //         await getListTransferences(credentialsUser?.id)
 //         await getListTransactions(credentialsUser?.id)
 
-    
+
 //         const combinedList = [...transactionsList, ...transferencesList]
 
 //         const sortedList = combinedList.sort((a, b) => new Date(b.dated) - new Date(a.dated))
@@ -98,7 +98,7 @@
 //       <h6 className="text-lg font-semibold text-black border-b-2 border-black pb-2"> Tu Actividad </h6>
 
 //       <div className="h-[250px] flex flex-col overflow-hidden overflow-y-scroll my-2">
-        
+
 //           {latestActivities.map((activity) => (
 //             <article key={activity.id} 
 //             className="border-b border-gray-300 text-black py-2 flex flex-row justify-between items-center ">
@@ -112,11 +112,11 @@
 //                 <p className="text-end font-semibold"> {formatCurrency(activity.amount)}</p>              
 //                 <p className="text-xs text-end text-gray-600"> {formatDate(activity?.dated)}</p>
 //               </div>
-             
-                 
+
+
 //             </article>
 //           ))}
-    
+
 //       </div>
 
 //       <Link href="/dashboard/activity" className="text-lg font-semibold text-black flex flex-row items-center justify-between border-t-2 border-black pt-2"> 
@@ -156,12 +156,12 @@ const HomePage = () => {
     getDataUser, // trae los datos del user
     isLogued,
   } = useAuth()
-  
-  const { 
-    transactionsList, 
-    transferencesList, 
+
+  const {
+    transactionsList,
+    transferencesList,
     getListTransferences,
-    getListTransactions ,
+    getListTransactions,
     loadingTransactions
   } = useTransaction()
 
@@ -196,21 +196,23 @@ const HomePage = () => {
     if (transferencesList.length > 0 || transactionsList.length > 0) {
       const combinedList = [...transferencesList, ...transactionsList]
         .sort((a, b) => new Date(b.dated) - new Date(a.dated))
-        .slice(0, 10); 
+        .slice(0, 10);
       setCombinedActivityList(combinedList);
     }
   }, [transferencesList, transactionsList]);
+
+  console.log(combinedActivityList)
 
 
   return (
     <section className="text-white flex flex-col gap-y-4">
       <article className="shadow-md bg-graydark rounded-md mt-20 text-white py-12 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
         <CopyToClipboard text={credentialsUser?.cvu} >
-          <article onClick={ ()=>{
+          <article onClick={() => {
             toggleShowMenu()
             toast.success("CVU copiado en el Portapapeles")
 
-            }} className={`cursor-pointer transition-all duration-200 font-semibold  absolute ${showCVU ? "translate-x-0" : "translate-x-[300px]"}  bottom-0 right-0 text-lime-950 bg-greenlime px-12 py-2 rounded-tl-md flex flex-row items-center`}>
+          }} className={`cursor-pointer transition-all duration-200 font-semibold  absolute ${showCVU ? "translate-x-0" : "translate-x-[300px]"}  bottom-0 right-0 text-lime-950 bg-greenlime px-12 py-2 rounded-tl-md flex flex-row items-center`}>
             <MdOutlineContentCopy className='mx-2 text-xl' />
             <p> {credentialsUser?.cvu} </p>
           </article>
@@ -234,9 +236,9 @@ const HomePage = () => {
         </Link>
       </section>
 
-      <section className="bg-white max-w-[720px] mx-auto w-[95%] rounded-lg overflow-hidden overflow-y-scroll p-4 shadow-md">
+      {/* <section className="bg-white max-w-[720px] mx-auto w-[95%] rounded-lg overflow-hidden p-4 shadow-md">
         <h6 className="text-lg font-semibold text-black border-b-2 border-black pb-2"> Tu Actividad </h6>
-        <div className="h-[250px] flex flex-col overflow-hidden overflow-y-scroll my-2 justify-center items-center">
+        <div className="h-[250px] flex flex-col overflow-hidden overflow-y-scroll justify-center items-center mt-2">
           { loadingTransactions && <LoadingSpinner /> }
           {combinedActivityList.map((activity,index) => (
             <article key={`${activity.id}-${index}`} className=" w-full border-b border-gray-300 text-black py-2 flex flex-row justify-between items-center">
@@ -255,7 +257,43 @@ const HomePage = () => {
           <p> Ver toda tu actividad </p>
           <FaArrowRight />
         </Link>
-      </section> 
+      </section>  */}
+      <section className="bg-white max-w-[720px] mx-auto w-[95%] rounded-lg overflow-hidden p-4 shadow-md">
+        <h6 className="text-lg font-semibold text-black border-b-2 border-black pb-2">
+          Tu Actividad
+        </h6>
+        <div className="h-[400px] flex flex-col overflow-y-auto justify-start items-center mt-2 space-y-2">
+          {loadingTransactions && <LoadingSpinner />}
+          {combinedActivityList.map((activity, index) => (
+            <article
+              key={`${activity.id}-${index}`}
+              className="w-full border-b border-gray-300 text-black py-2 flex flex-row justify-between items-center"
+            >
+              <div className="flex flex-row gap-x-2 items-center">
+              <div className={`w-3 h-3 rounded-full ${activity.type === "Deposit" ? "bg-greenlime" : "bg-red-400"} `}/>
+                <p>{activity.description}</p>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-end font-semibold">
+                  {formatCurrency(activity.amount)}
+                </p>
+                <p className="text-xs text-end text-gray-600">
+                  {formatDate(activity.dated)}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <Link
+          href="/dashboard/activity"
+          className="text-lg font-semibold text-black flex flex-row items-center justify-between border-t-2 border-black pt-2"
+        >
+          <p>Ver toda tu actividad</p>
+          <FaArrowRight />
+        </Link>
+      </section>
+      <Toaster />
+
       <Toaster />
     </section>
   )

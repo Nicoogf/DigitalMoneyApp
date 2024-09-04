@@ -5,7 +5,7 @@ import Logo from "../../public/logo-off.png"
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-around relative z-50 w-full max-w-[1920px] mx-auto h-[calc(100vh-40px)] rounded-xl border border-slate-900 overflow-hidden bg-gray-900 text-white">
+    <main className="flex flex-col items-center justify-around relative z-50 w-full max-w-[1920px] mx-auto h-[100%] lg:rounded-xl border border-slate-900 overflow-hidden bg-graydark text-white">
 
     <nav className="absolute top-0 bg-greenlime text-slate-800 w-full p-2 flex flex-row items-center justify-between">
      <Image src={Logo} alt= "Logo Digital Money App" className="w-14 ml-4"/> 
@@ -26,7 +26,7 @@ export default function Home() {
 
       <section className="w-[95%] xl:w-[60%] flex flex-col md:flex-row gap-2 max-w-[1440px] mx-auto -mt-20">
 
-        <Link href="/login" className="bg-slate-800 flex flex-col gap-2 p-3 xl:p-6 md:p-4 rounded-xl md:w-[50%] shadow-lg h-[150px] md:h-[200px] hover:bg-slate-300 hover:text-black transition-all duration-100 group">
+        <Link href="/login" className="bg-greylight flex flex-col gap-2 p-3 xl:p-6 md:p-4 rounded-xl md:w-[50%] shadow-lg h-[150px] md:h-[200px] hover:bg-slate-300 hover:text-black transition-all duration-100 group">
         <article>
           <h4 className="border-b-2 border-greenlime mb-2 pb-2 text-xl md:text-2xl  group-hover:border-lime-600">
             Transferi Dinero
@@ -34,7 +34,7 @@ export default function Home() {
           <p className="text-sm md:text-base"> Desde Digital Money House vas a poder transferir dinero a otras cuentas, asi como tambien recibir transferencias y nuclear tu capital en nuestra billetera virtual </p>
         </article>
         </Link>
-        <Link href="/login" className="bg-slate-800 flex flex-col gap-2 p-3 xl:p-6 md:p-4 rounded-xl md:w-[50%] shadow-lg h-[150px] md:h-[200px] hover:bg-slate-300 hover:text-black transition-all duration-200 group ">
+        <Link href="/login" className="bg-greylight flex flex-col gap-2 p-3 xl:p-6 md:p-4 rounded-xl md:w-[50%] shadow-lg h-[150px] md:h-[200px] hover:bg-slate-300 hover:text-black transition-all duration-200 group ">
         <article>
         <h4 className="border-b-2 border-greenlime mb-2 pb-2 text-xl md:text-2xl  group-hover:border-lime-600">
             Pago de Servicios
