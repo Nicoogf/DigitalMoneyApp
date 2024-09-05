@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 
 const PayServicesPage = () => {
-  const { listServices, SetSelectService } = useServices();
+  const { listServices, SetSelectService ,selectedService} = useServices();
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSelectService = (id) => {

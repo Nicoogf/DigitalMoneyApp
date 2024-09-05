@@ -110,8 +110,7 @@ const TransferencePage = () => {
     };
 
     try {
-      await transferAmount(credentialsUser.id, transferenceData);
-      console.log("Transference successful:");
+      await transferAmount(credentialsUser.id, transferenceData); 
       router.push('/dashboard'); 
 
     } catch (error) {

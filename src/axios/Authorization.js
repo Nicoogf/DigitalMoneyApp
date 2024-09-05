@@ -3,10 +3,8 @@ import Cookies from 'js-cookie';
 
 
 export const signInRequest = async( userData ) => {
-    try {
-        console.log(userData)      
-        const response = await axios.post('/api/login', userData);
-        console.log(response)    
+    try {          
+        const response = await axios.post('/api/login', userData);      
         const token = response.data.token;    
      
         Cookies.set('token', token, {

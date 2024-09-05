@@ -93,8 +93,7 @@ export const TransactionProvider = ({ children }) => {
       const res = await createDepositRequest(accountId, depositData);
       setSuccess(true); // Set success to true if the deposit was successful
       // router.push("/dashboard");
-      setLoadingTransactions(false)
-      console.log(res);
+      setLoadingTransactions(false)    
     } catch (error) {
       setError('Hubo un problema al procesar la transacción.');
       console.log(error);
@@ -109,8 +108,7 @@ export const TransactionProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await createTransferenceRequest(accountId, transferenceData);
-      console.log(res)
+      const res = await createTransferenceRequest(accountId, transferenceData); 
       setSuccess(true);
     } catch (error) {
       console.log(error)
@@ -133,7 +131,7 @@ export const TransactionProvider = ({ children }) => {
         new Date().toISOString(),  // Fecha actual
         `Pago de servicio: ${service.name}`  // Descripción
       );
-      console.log("Respuesta de la transacción:", res);
+     
     } catch (error) {
       console.log("Error en payService:", error);
     }

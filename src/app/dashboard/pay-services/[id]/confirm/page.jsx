@@ -151,8 +151,7 @@ const ConfirmPayPage = () => {
         }
 
         try {
-            payService(credentialsUser?.id, service); 
-            console.log("Datos del formulario:", data);
+            payService(credentialsUser?.id, service);             
             router.push(`/dashboard/pay-services/${selectedCardId}/confirm/success`);
         } catch (error) {
             console.log(error);
@@ -183,7 +182,7 @@ const ConfirmPayPage = () => {
 
     return (
         <main className="text-black">
-            <section className='mt-20 p-8 shadow-md rounded-lg bg-graydark w-[90%] mx-auto max-w-[720px] bg-800-200 '>
+            <section className=' mt-16 lg:mt-20 p-8 shadow-md rounded-lg bg-graydark w-[90%] mx-auto max-w-[720px] bg-800-200 '>
                 <div className='flex flex-row justify-between items-center px-4 border-b border-gray-700'>
                     <h6 className='py-4 font-semibold text-2xl text-greenlime'>{service?.name}</h6>
                     <h6 className='text-white'>Ver detalles de pago</h6>
@@ -194,10 +193,10 @@ const ConfirmPayPage = () => {
                 </div>
             </section>
 
-            <form onSubmit={handleSubmit(onSubmit)} className='w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8 mt-8'>
-                <section className='flex flex-col gap-y-2'>
+            <form onSubmit={handleSubmit(onSubmit)} className='w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8 mt-4 lg:mt-8'>
+                <section className='flex flex-col gap-y-2  h-[200px] lg:h-[300px] overflow-hidden overflow-y-scroll custom-scrollbar'>
                     <article
-                        className='flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
+                        className='w-[98%] flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
                         <div className='flex flex-row items-center gap-x-2'>
                             <div className='h-5 w-5 rounded-full bg-greenlime' />
                             <h6>Pagar con saldo disponible: 
@@ -216,7 +215,7 @@ const ConfirmPayPage = () => {
                     {cardsList.map(card => (
                         <article
                             key={card.id}
-                            className='flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
+                            className='w-[98%] flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
                             <div className='flex flex-row items-center gap-x-2'>
                                 <div className='h-5 w-5 rounded-full bg-greenlime' />
                                 <h6>Terminada en {card.number_id.toString().slice(-4)}</h6>

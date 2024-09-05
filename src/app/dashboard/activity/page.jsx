@@ -435,7 +435,7 @@ const ActivityPage = () => {
                     </div>
                 </div>
 
-                <ul className='flex flex-col gap-y-6 mt-4 h-[400px] overflow-hidden overflow-y-scroll'>
+                <ul className='flex flex-col gap-y-6 mt-4 h-[250px] lg:h-[400px] overflow-hidden overflow-y-scroll'>
                     {filteredTransactions.map((transaction, index) => (
                         <li key={index} className="flex flex-row justify-between py-1 border-b border-gray-300">
                             <div className="flex flex-row items-center gap-x-2 ">

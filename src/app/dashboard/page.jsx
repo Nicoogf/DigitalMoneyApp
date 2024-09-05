@@ -201,12 +201,11 @@ const HomePage = () => {
     }
   }, [transferencesList, transactionsList]);
 
-  console.log(combinedActivityList)
 
 
   return (
     <section className="text-white flex flex-col gap-y-4">
-      <article className="shadow-md bg-graydark rounded-md mt-20 text-white py-12 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
+      <article className="shadow-md bg-graydark rounded-md mt-20 text-white py-6 lg:py-12 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
         <CopyToClipboard text={credentialsUser?.cvu} >
           <article onClick={() => {
             toggleShowMenu()
@@ -221,9 +220,9 @@ const HomePage = () => {
           <Link href="/dashboard/cards" className="text-white transition-all duration-200 hover:text-greenlime"> Ver Tarjetas </Link>
           <button onClick={toggleShowMenu} className="text-white transition-all duration-200 hover:text-greenlime"> Ver CVU </button>
         </div>
-        <div className="ml-8 flex flex-col gap-y-2 pb-4 ">
+        <div className="ml-8 flex flex-col gap-y-2 pb-4 pt-2 ">
           <p className="font-semibold"> Dinero Disponible </p>
-          <p className="font-bold border-[3px] border-greenlime w-[60%] max-w-[340px] text-3xl text-center rounded-full py-2"> $ {formatCurrency(credentialsUser?.available_amount)} </p>
+          <p className="font-bold border-[3px] border-greenlime w-[60%] max-w-[340px] lg:text-3xl text-center rounded-full py-2 text-md"> $ {formatCurrency(credentialsUser?.available_amount)} </p>
         </div>
       </article>
 
@@ -262,7 +261,7 @@ const HomePage = () => {
         <h6 className="text-lg font-semibold text-black border-b-2 border-black pb-2">
           Tu Actividad
         </h6>
-        <div className="h-[400px] flex flex-col overflow-y-auto justify-start items-center mt-2 space-y-2">
+        <div className="h-[100px] lg:h-[270px] flex flex-col overflow-y-auto justify-start items-center mt-2 space-y-2">
           {loadingTransactions && <LoadingSpinner />}
           {combinedActivityList.map((activity, index) => (
             <article

@@ -15,8 +15,7 @@ const RegisterPage = () => {
         if (data.confirmPassword !== data.password) {
             setContextErrors(["Las contraseñas no coinciden"]);
         } else {
-            try {
-                console.log("el valor de data fue:", data);
+            try {                
                 signUp(data);
             } catch (error) {
                 setContextErrors([error]);

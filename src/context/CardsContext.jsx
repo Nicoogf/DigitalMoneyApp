@@ -26,8 +26,7 @@ export const CardsProvider = ({ children }) => {
     const fetchCards = async (accountId) => {
         setCardsLoading(true)
         try {
-            const data = await getCardsRequest(accountId);
-            console.log("Las cards son :" , data)
+            const data = await getCardsRequest(accountId);      
             setCardsLoading(false)
             setCardsList(data);
         } catch (error) {

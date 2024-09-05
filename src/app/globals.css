@@ -12,3 +12,21 @@ input[type=number]::-webkit-outer-spin-button {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de scroll */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #C1FD35; /* Color del scroll */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Color del track (fondo) */
+}
+
+.custom-scrollbar {
+  scrollbar-color: #C1FD35 #f0f0f0; /* Firefox support: color del scroll y del track */
+  scrollbar-width: thin; /* Ancho del scrollbar en Firefox */
+}

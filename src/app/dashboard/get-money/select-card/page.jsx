@@ -23,13 +23,10 @@ const SelectCard = () => {
   })
 
   const handleCardSelection = (id) => {
-    console.log("ID SELECIONADO" , id)
     setSelectedCardId(id);
   };
 
  
-
-console.log("Usuario" , credentialsUser)
 
 useEffect(() => {
     fetchCards(credentialsUser?.id)
@@ -39,17 +36,17 @@ useEffect(() => {
   return (
     <section>
           <main className="">
-            <Link href="/dashboard/get-money" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point'> Ir Atras </Link>
+            <Link href="/dashboard/get-money" className='mt-2 lg:mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point'> Ir Atras </Link>
             <form onSubmit={onSubmit} className='mt-8 w-[90%] mx-auto max-w-[720px] bg-graydark rounded-xl shadow-lg p-8'>
                 <h6 className='text-greenlime text-lg font-semibold mb-4'> Seleccionar Tarjeta </h6>
                 <section className='w-[100%] mx-auto bg-white rounded-lg p-4 text-black'>
                     <h6 className='text-lg font-semibold'> Tus Tarjetas </h6>
             
 
-                    <section className='flex flex-col justify-center items-center'>
+                    <section className='flex flex-col justify-center items-center h-[300px] overflow-hidden overflow-y-scroll'>
                         {cardsLoading && <LoadingSpinner /> }
                         {cardsList.map((card) => (
-                            <article key={card.id} className='w-full flex flex-row items-center justify-between border-b border-gray-300 py-4'>
+                            <article key={card.id} className='w-full flex flex-row items-center justify-between border-b border-gray-300 py-2 lg:py-4'>
                                 <div className='flex flex-row items-center gap-x-7'>
                                     <div className='w-8 h-8 rounded-full bg-greenlime' />
                                     <h6>Terminado en {String(card.number_id).slice(-4)}</h6>

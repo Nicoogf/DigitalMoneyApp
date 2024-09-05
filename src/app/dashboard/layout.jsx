@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { useAuth } from '@/context/UserContext'
 import { getFirstLetters } from '@/funcionalidad/funcionalidades'
 import LoadingSpinner from '@/components/loading'
+import MenuMobile from '@/components/MenuMobile'
+import { IoMenu } from "react-icons/io5";
 
 const LayoutPage = ({ children }) => {  const {
   credentialsUser,  // id id_user amount cvu alias
@@ -14,7 +16,9 @@ const LayoutPage = ({ children }) => {  const {
   setLoading,
   getDataUser, // trae los datos del user
   isLogued,
-  logout
+  logout,
+  vierMenuMobile, 
+  setViewMenuMoible
 } = useAuth()
 
 
@@ -27,17 +31,23 @@ useEffect( () => {
   getDataUser(credentialsUser?.user_id)
 } , [credentialsUser]) 
 
+const toggleMenuMobile = () => {
+  setViewMenuMoible(!vierMenuMobile)
+}
+
   return (
     <section className="text-white h-[100%] overflow-hidden overflow-y-scroll grid grid-cols-12 relative">
-
-      <header className="absolute top-0 w-full bg-graydark py-2 flex flex-row justify-between">
+      <MenuMobile />
+      <header className="absolute top-0 w-full bg-graydark py-2 flex flex-row justify-around lg:justify-between">
         <Image src={LogoDMH} alt="Digital Money House Logo" className=" ml-8 w-20 object-contain" />
         <Link href="/dashboard" className="flex flex-row items-center mr-8 gap-x-4">
-          <h6 className="bg-greenlime rounded-lg py-1 px-2 text-lime-950 font-bold">
+      
+          <h6 className="bg-greenlime rounded-lg py-1 px-2 text-lime-950 font-bold hidden lg:flex">
             {getFirstLetters(dataUser?.firstname,dataUser?.lastname)}
           </h6>
-          <p className="font-semibold"> Hola , {dataUser?.firstname}  {dataUser?.lastname}</p>
+          <p className="font-semibold text-xs lg:text-base"> Hola , {dataUser?.firstname}  {dataUser?.lastname}</p>
         </Link>
+        <IoMenu onClick={toggleMenuMobile} className="lg:hidden bg-greenlime text-lime-950 rounded-sm text-3xl absolute top-4 right-4" />
       </header>
 
       <nav className="hidden lg:grid lg:col-span-3 bg-greenlime">

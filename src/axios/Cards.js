@@ -32,8 +32,7 @@ export const DeleteCardRequest = async (accountId, cardId) => {
 
 export const CreateCardRequest = async (accountId, cardData) => {
     try {
-      const token = Cookies.get('token')
-      console.log(token)
+      const token = Cookies.get('token')     
       const response = await axios.post(`/api/accounts/${accountId}/cards`, cardData, {
         headers: {
           Authorization: `${token}`,

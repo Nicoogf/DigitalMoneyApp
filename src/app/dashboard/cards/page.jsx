@@ -116,9 +116,9 @@ const CardsPage = () => {
                 </div>
             </div>
 
-            <section className='mt-8 w-[90%] max-w-[720px] mx-auto bg-white rounded-xl shadow-md p-8'>
+            <section className='mt-8 w-[90%] max-w-[720px] mx-auto bg-white rounded-xl shadow-md p-3 lg:p-8'>
                 <h6 className='text-lg font-semibold mb-4'>Tus Tarjetas</h6>
-                <section className="flex flex-col justify-center items-center h-[400px] pb-20 overflow-hidden overflow-y-scroll">
+                <section className="flex flex-col justify-center items-center h-[200px] lg:h-[400px] pb-4 lg:pb-20 overflow-hidden overflow-y-scroll custom-scrollbar">
                     {cardsLoading ? (
                         <LoadingSpinner />
                     ) : (
@@ -126,7 +126,7 @@ const CardsPage = () => {
                             <p>No tienes tarjetas asociadas.</p>
                         ) : (
                             cardsList.map((card) => (
-                                <article key={card.id} className='w-full flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
+                                <article key={card.id} className='w-[97%] flex flex-row items-center justify-between py-6 border-b-2 border-gray-400'>
                                     <div className='flex flex-row items-center gap-x-2'>
                                         <div className='h-5 w-5 rounded-full bg-greenlime' />
                                         <h6>Terminada en {card.number_id.toString().slice(-4)}</h6>

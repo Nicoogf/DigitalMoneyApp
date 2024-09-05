@@ -13,8 +13,7 @@ const LoginPage = () => {
 
     const onSubmit = async (data) => {
        try {
-        const response = await signIn(data);
-        console.log('Login successful:', response);
+        const response = await signIn(data);      
         router.push("/dashboard")
        } catch (error) {
         console.log("Error")

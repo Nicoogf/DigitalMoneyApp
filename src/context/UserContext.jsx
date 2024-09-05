@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     const [ credentialsUser , setCredentialsUser ] = useState({})
     const [ dataUser , setDataUser ] = useState({})
     const [ errorsLogin, setErrorLogin ] = useState(null)
+    const [ vierMenuMobile, setViewMenuMoible ] = useState(true)
 
     
    
@@ -32,8 +33,7 @@ export const AuthProvider = ({ children }) => {
     //Peticion de Registro
     const signUp = async (user) => {
         try {
-            const res = await registerRequest(user)
-            console.log("Contexto llamando /users " , res)
+            const res = await registerRequest(user)        
             router.push("/login")
         } catch (error) {
             console.log(error.response)
@@ -124,7 +124,7 @@ export const AuthProvider = ({ children }) => {
 
 
     return (
-        <AuthContext.Provider value={{errorsLogin, updateUser,setErrorLogin,
+        <AuthContext.Provider value={{vierMenuMobile, setViewMenuMoible ,errorsLogin, updateUser,setErrorLogin,
             loading,
             contextErrors,logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
             {children} 

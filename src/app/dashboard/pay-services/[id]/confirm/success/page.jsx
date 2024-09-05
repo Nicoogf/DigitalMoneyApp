@@ -8,7 +8,6 @@ const SuccesTransactionPage = () => {
         <section className='mt-20 p-8 bg-graydark w-[90%] mx-auto max-w-[720px] shadow-md rounded-lg flex flex-col items-center justify-center'> 
             <CiCircleCheck className='text-7xl text-greenlime'/>
             <h6 className='border-b border-gray-700 text-white font-semibold text-2xl py-4'> Pago Realizado </h6>
-            <h6 className='text-gray-400 mt-4'> Recuerda que puedes descargar el comprobante</h6>
             <h6 className='text-gray-400'> Los cambios se veran reflejados cuando redirijas al inicio</h6>
         </section>
 
