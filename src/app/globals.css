@@ -30,3 +30,17 @@ input[type=number]::-webkit-outer-spin-button {
   scrollbar-color: #C1FD35 #f0f0f0; /* Firefox support: color del scroll y del track */
   scrollbar-width: thin; /* Ancho del scrollbar en Firefox */
 }
+
+.bg-image{
+  background-image: url("../../public/fondoHome.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-image2{
+  background-image: url("../../public/fondoHome2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
