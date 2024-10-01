@@ -41,23 +41,55 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+   
+
     //Peticion de Iniciar Seccion
+    // const signIn = async (user) => {
+    //     try {
+    //         const res = await signInRequest(user)        
+    //         setLoading(false)                      
+    //     } catch (error) {   
+    //         setLoading(false)         
+    //         if (error.response) {
+    //             const errorMessage = error.response.data.error;       
+    //             const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+    //             setContextErrors(errorsArray);
+    //             setErrorLogin(errorsArray)
+    //         } else {
+    //             setContextErrors(['Se produjo un error inesperado.']);
+    //         }
+    //     }
+    // }
+
     const signIn = async (user) => {
-        try {
-            const res = await signInRequest(user)        
-            setLoading(false)                      
-        } catch (error) {   
-            setLoading(false)         
-            if (error.response) {
-                const errorMessage = error.response.data.error;       
-                const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
-                setContextErrors(errorsArray);
-                setErrorLogin(errorsArray)
-            } else {
-                setContextErrors(['Se produjo un error inesperado.']);
-            }
-        }
-    }
+      try {
+          const res = await signInRequest(user);
+          setLoading(false);
+      } catch (error) {
+          setLoading(false);
+          if (error.response) {
+              let errorMessage = error.response.data.error;
+  
+          
+              if (errorMessage.includes("user not found")) {
+                  errorMessage = "Usuario no registrado en DigitalMoney";
+              }
+              
+      
+              if (errorMessage.includes("invalid credentials")) {
+                  errorMessage = "Credenciales inválidas, por favor verifica tus datos";
+              }
+  
+              // Aseguramos que errorMessage siempre sea un array
+              const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+              setContextErrors(errorsArray);
+              setErrorLogin(errorsArray);
+          } else {
+              setContextErrors(['Se produjo un error inesperado.']);
+          }
+      }
+  };
+  
 
     //Fetch para controlar que haya token y devolver credenciales
     const isLogued = async() =>{
@@ -126,7 +158,7 @@ export const AuthProvider = ({ children }) => {
     return (
         <AuthContext.Provider value={{vierMenuMobile, setViewMenuMoible ,errorsLogin, updateUser,setErrorLogin,
             loading,
-            contextErrors,logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser,contextErrors , loading, signUp, signIn, setContextErrors}}>
+            contextErrors,logout, isLogued, setLoading,getDataUser,dataUser,credentialsUser, loading, signUp, signIn, setContextErrors}}>
             {children} 
         </AuthContext.Provider>
     )

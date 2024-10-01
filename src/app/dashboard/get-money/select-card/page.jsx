@@ -43,7 +43,7 @@ useEffect(() => {
                     <h6 className='text-lg font-semibold'> Tus Tarjetas </h6>
             
 
-                    <section className='flex flex-col justify-center items-center h-[300px] overflow-hidden overflow-y-scroll'>
+                    <section className='flex flex-col items-center h-[300px] overflow-hidden overflow-y-scroll'>
                         {cardsLoading && <LoadingSpinner /> }
                         {cardsList.map((card) => (
                             <article key={card.id} className='w-full flex flex-row items-center justify-between border-b border-gray-300 py-2 lg:py-4'>

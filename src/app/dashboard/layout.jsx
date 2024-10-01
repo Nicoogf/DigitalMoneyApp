@@ -37,6 +37,7 @@ const toggleMenuMobile = () => {
 
   return (
     <section className="text-white h-[100%] overflow-hidden overflow-y-scroll grid grid-cols-12 relative">
+      
       <MenuMobile />
       <header className="absolute top-0 w-full bg-graydark py-2 flex flex-row justify-around lg:justify-between">
         <Image src={LogoDMH} alt="Digital Money House Logo" className=" ml-8 w-20 object-contain" />
