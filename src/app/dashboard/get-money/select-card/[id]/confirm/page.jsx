@@ -62,7 +62,7 @@ const ConfirmPage = () => {
 
     return (
         <main>
-            <Link href="/dashboard/get-money/select-card/id" className='mt-4 lg:mt-8 mb-2 lg:mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer'>
+            <Link href="/dashboard/get-money/select-card/id" className='mt-4 lg:mt-8 mb-2 lg:mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-pointer text-graydark'>
                 Ir Atras
             </Link>
 

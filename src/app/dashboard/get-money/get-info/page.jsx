@@ -16,7 +16,7 @@ const GetInfoAcount = () => {
 
     return (
         <main>
-            <Link href="/dashboard/get-money" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point'> Ir Atras </Link>
+            <Link href="/dashboard/get-money" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point text-graydark'> Ir Atras </Link>
             <section className='w-[90%] max-w-[720px] mx-auto bg-graydark mt-8 shadow-lg rounded-xl p-8 flex flex-col gap-y-4'>
                 <h6 className='text-white font-semibold '> Copia tu cvu o alias para ingresar o transferir dinero desde otra cuenta</h6>
 

@@ -8,7 +8,7 @@ const GetMoneyPage = () => {
   return (
     <main>
 
-      <Link href="/dashboard" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point'> Ir Atras </Link>
+      <Link href="/dashboard" className='mt-8 mb-4 block w-[90%] max-w-[720px] mx-auto text-lg font-semibold cursor-point text-graydark'> Ir Atras </Link>
       <Link href="/dashboard/get-money/get-info" className='mt-8 w-[90%] max-w-[720px] mx-auto bg-graydark text-greenlime flex rounded-xl shadow-lg items-center flex-row gap-x-4 px-10 py-12 justify-between'>
       <div className='flex flex-row items-center gap-x-4'>
         <FaRegUser className='border border-greenlime rounded-full p-2 box-content text-2xl'/>

@@ -36,22 +36,29 @@ const toggleMenuMobile = () => {
 }
 
   return (
-    <section className="text-white h-[100%] overflow-hidden overflow-y-scroll grid grid-cols-12 relative">
-      
+    <section className="text-white h-[100vh] overflow-y-scroll  flex flex-col relative w-full">
+
       <MenuMobile />
-      <header className="absolute top-0 w-full bg-graydark py-2 flex flex-row justify-around lg:justify-between">
+      <header className="h-[64px] lg:h-[70px] w-full bg-graydark py-2 flex flex-row justify-between">
         <Image src={LogoDMH} alt="Digital Money House Logo" className=" ml-8 w-20 object-contain" />
-        <Link href="/dashboard" className="flex flex-row items-center mr-8 gap-x-4">
+
+        <Link href="/dashboard" className="flex flex-row items-center mr-16 gap-x-4">
       
-          <h6 className="bg-greenlime rounded-lg py-1 px-2 text-lime-950 font-bold hidden lg:flex">
+          <h6 className="bg-greenlime rounded-lg py-1 px-2 text-lime-950 font-bold hidden lg:flex w-8 h-8  lg:justify-center lg:items-center">
             {getFirstLetters(dataUser?.firstname,dataUser?.lastname)}
           </h6>
+
           <p className="font-semibold text-xs lg:text-base"> Hola , {dataUser?.firstname}  {dataUser?.lastname}</p>
         </Link>
-        <IoMenu onClick={toggleMenuMobile} className="lg:hidden bg-greenlime text-lime-950 rounded-sm text-3xl absolute top-4 right-4" />
+
+        <IoMenu onClick={toggleMenuMobile} className="lg:hidden bg-greenlime text-lime-950 rounded-sm text-3xl absolute top-4 right-4 cursor-pointer" />
       </header>
 
-      <nav className="hidden lg:grid lg:col-span-3 bg-greenlime">
+      <main className='flex flex-row h-[calc(100%-128px)] lg:h-[calc(100%-134px)] w-full'>
+
+    
+
+      <nav className="hidden lg:flex w-[25%] max-w-[350px] bg-greenlime">
         <div className="flex flex-col gap-y-4 p-8 mt-20 text-lime-950 font-semibold text-lg">
           <Link href="/dashboard" className="text-semibold"> Inicio </Link>
           <Link href="/dashboard/activity"> Actividad </Link>       
@@ -62,12 +69,15 @@ const toggleMenuMobile = () => {
           <button onClick={logout} className="block text-start"> Cerrar Sesíon </button>
         </div>
       </nav>
-      <section className="col-span-12 lg:col-span-9 bg-lightmain max-h-[980px] overflow-hidden">
+
+      <section className="w-full lg:w-full bg-lightmain h-[100%] overflow-hidden overflow-y-scroll pb-12 ">
         {children}
       </section>
 
-      <footer className="p-4 bg-greylight absolute bottom-0 z-50 w-full py-3 text-greenlime"> 
-        Digital Money House 2024        
+      </main>
+
+      <footer className="w-full h-[64px] bg-greylight text-greenlime z-50 flex flex-row items-center justify-center lg:justify-start">
+        <h6 className="text-center lg:ml-8 "> 2024 Digital Money App </h6>
       </footer>
           
     </section>

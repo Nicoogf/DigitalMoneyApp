@@ -182,7 +182,7 @@ const ConfirmPayPage = () => {
 
     return (
         <main className="text-black">
-            <section className=' mt-16 lg:mt-20 p-8 shadow-md rounded-lg bg-graydark w-[90%] mx-auto max-w-[720px] bg-800-200 '>
+            <section className=' mt-6 p-8 shadow-md rounded-lg bg-graydark w-[90%] mx-auto max-w-[720px] bg-800-200 '>
                 <div className='flex flex-row justify-between items-center px-4 border-b border-gray-700'>
                     <h6 className='py-4 font-semibold text-2xl text-greenlime'>{service?.name}</h6>
                     <h6 className='text-white'>Ver detalles de pago</h6>
