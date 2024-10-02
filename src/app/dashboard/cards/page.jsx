@@ -34,7 +34,7 @@ const CardsPage = () => {
     };
 
     return (
-        <main className='pb-20 text-black mt-20'>
+        <main className='pb-20 text-black mt-8'>
             <div
                 onClick={handleAddCardClick}
                 className="mt-8 w-[90%] max-w-[720px] mx-auto bg-graydark text-greenlime flex rounded-xl shadow-lg flex-col gap-y-4 px-10 py-12 justify-between cursor-pointer"
@@ -49,7 +49,7 @@ const CardsPage = () => {
                 </div>
             </div>
 
-            <section className='mt-8 w-[90%] max-w-[720px] mx-auto bg-white rounded-xl shadow-md p-3 lg:p-8'>
+            <section className='mt-4 w-[90%] max-w-[720px] mx-auto bg-white rounded-xl shadow-md p-3 lg:p-8'>
                 <h6 className='text-lg font-semibold mb-4'>Tus Tarjetas</h6>
                 <section className="flex flex-col items-center h-[200px] lg:h-[400px] pb-4 lg:pb-20 overflow-hidden overflow-y-scroll custom-scrollbar">
                     {cardsLoading ? (

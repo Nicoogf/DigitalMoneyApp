@@ -18,7 +18,6 @@ export const ServiceProvider = ({ children }) => {
     const [listServices, setListServices] = useState([])
     const [selectedService, SetSelectService] = useState(null)
     // const [selectedServiceId , setSelectedServiceId] = useState(null)
-    
     const [ service , setService ] = useState(null)
 
     const fetchList = async () => {

@@ -26,7 +26,7 @@ const ConfirmPage = () => {
             amount,
             dated: new Date().toISOString(),
             destination: 'Cuenta Propia',
-            origin: `${fetchCardId.number_id}`,
+            origin: `${fetchCardId?.number_id}`,
         };
 
         depositAmount(credentialsUser?.id, depositData);

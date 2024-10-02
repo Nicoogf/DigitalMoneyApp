@@ -358,7 +358,7 @@ const HomePage = () => {
   return (
     <section className="text-white flex flex-col gap-y-4">
       {/* Sección de dinero disponible */}
-      <article className="shadow-md bg-graydark rounded-md mt-4 text-white py-6 lg:py-12 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
+      <article className="shadow-md bg-graydark rounded-md mt-4 text-white py-6 lg:py-6 w-[95%] max-w-[720px] mx-auto flex flex-col relative overflow-hidden">
         <CopyToClipboard text={credentialsUser?.cvu} >
           <article
             onClick={() => {

@@ -23,6 +23,8 @@ const RegisterPage = () => {
         }
     }
 
+  
+
 
     useEffect(() => {
         if (contextErrors.length > 0) {
@@ -36,13 +38,13 @@ const RegisterPage = () => {
 
     return (
 
-        <section className="bg-graydark h-[100%] flex justify-center flex-col relative lg:rounded-xl overflow-hidden">
+        <section className="bg-graydark h-[100%] flex justify-center flex-col relative overflow-hidden">
              <MenuSuperior link="login" text="Iniciar sesión" />
 
             {contextErrors && contextErrors.length > 0 && (
                 <section className="absolute top-20 left-1/2 transform -translate-x-1/2">
                     {contextErrors.map((error, key) => (
-                        <p key={key} className="text-red-500 text-xl"> {error} </p>
+                        <p key={key} className="text-red-500 text-center"> {error} </p>
                     ))}
                 </section>
             )}

@@ -29,6 +29,8 @@ export const TransactionProvider = ({ children }) => {
   const [amount, setAmount] = useState(0);
   const [success, setSuccess] = useState(false);
 
+  const [ movementSelected , setMovementSelected] = useState(null)
+
   // Fetch Listado de transactions
   const getListTransactions = async (accountId) => {
     setLoadingTransactions(true)
@@ -144,7 +146,8 @@ export const TransactionProvider = ({ children }) => {
       payService,loadingTransactions, setLoadingTransactions,
       error, amount, success, setAmount, transferAmount,
       getListTransactions, depositAmount, transferenceAmount, setTrnsferenceAmout: setTransferenceAmout, getListTransferences, transferencesList, transactionsList
-    }}>
+      ,setMovementSelected,movementSelected
+   }}>
       {children}
     </TransactionContext.Provider>
   );

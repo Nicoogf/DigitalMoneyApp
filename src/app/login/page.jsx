@@ -204,13 +204,23 @@ const LoginPage = () => {
     const router = useRouter()
     const [nextOption, setNextOption] = useState(false)
 
+    // const onSubmit = async (data) => {
+    //     const response = await signIn(data);
+    //     if (!errorsLogin) {
+    //         router.push("/dashboard")
+    //     }
+    // }
+
     const onSubmit = async (data) => {
         const response = await signIn(data);
-        if (!errorsLogin) {
-            router.push("/dashboard")
+        if (response && !errorsLogin) { 
+            console.log("Redirigiendo a dashboard...");
+            router.push("/dashboard");
+        } else {
+            console.log("Error en el inicio de sesión:", errorsLogin);
         }
-    }
-
+    };
+    
     useEffect(() => {
         if (errorsLogin?.length > 0) {
             const timer = setTimeout(() => {
@@ -226,7 +236,7 @@ const LoginPage = () => {
     }
 
     return (
-        <section className='overflow-hidden bg-graydark h-[100%] flex justify-center flex-col relative lg:rounded-xl'>
+        <section className='overflow-hidden bg-graydark h-[100%] flex justify-center flex-col relative'>
             <MenuSuperior link="register" text="Registrate" />
 
             {/* Mostrar mensajes de error de inicio de sesión */}

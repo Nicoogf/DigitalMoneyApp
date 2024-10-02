@@ -28,18 +28,35 @@ export const AuthProvider = ({ children }) => {
 
     
    
- 
 
     //Peticion de Registro
+    // const signUp = async (user) => {
+    //     try {
+    //         const res = await registerRequest(user)        
+    //         router.push("/successful")
+    //     } catch (error) {
+    //         console.log(error.response)
+    //         setContextErrors(error.response)
+    //     }
+    // }
+
     const signUp = async (user) => {
-        try {
-            const res = await registerRequest(user)        
-            router.push("/login")
-        } catch (error) {
-            console.log(error.response)
-            setContextErrors(error.response)
-        }
-    }
+      try {
+          const res = await registerRequest(user);
+          router.push("/successful");
+      } catch (error) {          
+          if (error.response && error.response.data) {             
+              if (error.response.data.error === "Email already registered") {
+                  setContextErrors(["El usuario ya se encuentra registrado"]);
+              } else {                
+                  setContextErrors([error.response.data.error || "Ocurrió un error inesperado"]);
+              }
+          } else {       
+              setContextErrors(["Error de conexión o respuesta inesperada"]);
+          }
+      }
+  };
+  
 
    
 
@@ -61,34 +78,62 @@ export const AuthProvider = ({ children }) => {
     //     }
     // }
 
-    const signIn = async (user) => {
-      try {
-          const res = await signInRequest(user);
-          setLoading(false);
-      } catch (error) {
-          setLoading(false);
-          if (error.response) {
-              let errorMessage = error.response.data.error;
+  //   const signIn = async (user) => {
+  //     try {
+  //         const res = await signInRequest(user);
+  //         setLoading(false);
+  //     } catch (error) {
+  //         setLoading(false);
+  //         if (error.response) {
+  //             let errorMessage = error.response.data.error;
   
           
-              if (errorMessage.includes("user not found")) {
-                  errorMessage = "Usuario no registrado en DigitalMoney";
-              }
+  //             if (errorMessage.includes("user not found")) {
+  //                 errorMessage = "Usuario no registrado en DigitalMoney";
+  //             }
               
       
-              if (errorMessage.includes("invalid credentials")) {
-                  errorMessage = "Credenciales inválidas, por favor verifica tus datos";
-              }
+  //             if (errorMessage.includes("invalid credentials")) {
+  //                 errorMessage = "Credenciales inválidas, por favor verifica tus datos";
+  //             }
   
-              // Aseguramos que errorMessage siempre sea un array
-              const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
-              setContextErrors(errorsArray);
-              setErrorLogin(errorsArray);
-          } else {
-              setContextErrors(['Se produjo un error inesperado.']);
-          }
-      }
-  };
+  //             // Aseguramos que errorMessage siempre sea un array
+  //             const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+  //             setContextErrors(errorsArray);
+  //             setErrorLogin(errorsArray);
+  //         } else {
+  //             setContextErrors(['Se produjo un error inesperado.']);
+  //         }
+  //     }
+  // };
+
+  const signIn = async (user) => {
+    setLoading(true); 
+    try {
+        const res = await signInRequest(user);
+        setLoading(false);
+        return res; 
+    } catch (error) {
+        setLoading(false);
+        if (error.response) {
+            let errorMessage = error.response.data.error;
+
+            if (errorMessage.includes("user not found")) {
+                errorMessage = "Usuario no registrado en DigitalMoney";
+            }
+
+            if (errorMessage.includes("invalid credentials")) {
+                errorMessage = "Credenciales inválidas, por favor verifica tus datos";
+            }
+
+            const errorsArray = Array.isArray(errorMessage) ? errorMessage : [errorMessage];
+            setContextErrors(errorsArray);
+            setErrorLogin(errorsArray);
+        } else {
+            setContextErrors(['Se produjo un error inesperado.']);
+        }
+    }
+};
   
 
     //Fetch para controlar que haya token y devolver credenciales

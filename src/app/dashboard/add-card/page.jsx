@@ -325,7 +325,7 @@ const AddCardPage = () => {
 
   return (
     <main>
-      <section className='mt-20 w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8 text-black'>
+      <section className='mt-8 w-[90%] mx-auto max-w-[720px] bg-white rounded-xl shadow-md p-8 text-black'>
         <Cards
           number={state.number}
           expiry={state.expiry}
@@ -339,7 +339,7 @@ const AddCardPage = () => {
               type="text"
               maxLength={16}
               placeholder="Card Number"
-              {...register('number', { required: 'Card Number is required' })}
+              {...register('number', { required: 'El numero de la tarjeta es requerido' })}
               value={state.number}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
@@ -352,7 +352,7 @@ const AddCardPage = () => {
               type="text"
               maxLength={5}
               placeholder="MM/AAAA"
-              {...register('expiry', { required: 'Expiry Date is required' })}
+              {...register('expiry', { required: 'La fecha de vencimiento es requerida' })}
               value={state.expiry}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
@@ -365,7 +365,7 @@ const AddCardPage = () => {
               type="text"
               maxLength={3}
               placeholder="Codigo de Seguridad"
-              {...register('cvc', { required: 'CVC is required' })}
+              {...register('cvc', { required: 'El codigo de seguridad es requerido' })}
               value={state.cvc}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
@@ -378,7 +378,7 @@ const AddCardPage = () => {
               type="text"
               maxLength={21}
               placeholder="Nombre"
-              {...register('name', { required: 'Name is required' })}
+              {...register('name', { required: 'El nombre es requerido' })}
               value={state.name}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
